@@ -1,5 +1,5 @@
 [build]
-  command = "npm run build"
+  command = "REACT_APP_API_BASE=https://auroravoices-api.onrender.com/api npm run build"
   publish = "build"
 
 [build.environment]
