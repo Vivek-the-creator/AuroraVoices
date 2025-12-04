@@ -15,73 +15,26 @@
   padding: 12px 0;
 }
 
-.nav-leading {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-}
-
-.profile-btn {
-  background: transparent;
-  border: 1px solid #334155;
-  color: #e5e7eb;
-  border-radius: 999px;
-  padding: 6px 8px;
-  cursor: pointer;
-  display: grid;
-  place-items: center;
-}
-
-.nav-bell-btn {
-  position: relative;
-  border-radius: 999px;
-  border: 1px solid #334155;
-  background: transparent;
-  color: #e5e7eb;
-  padding: 6px 8px;
-  cursor: pointer;
-  display: grid;
-  place-items: center;
-}
-
-.nav-bell-dot {
-  position: absolute;
-  top: -1px;
-  right: -1px;
-  width: 9px;
-  height: 9px;
-  border-radius: 999px;
-  background: #ef4444;
-  box-shadow: 0 0 0 2px #0b1220;
-}
-
-.nav-search input {
-  width: 340px;
-  max-width: 40vw;
-  padding: 10px 14px;
-  border-radius: 999px;
-  border: 1px solid #e2e8f0;
-  background: white;
-  color: #0f172a;
-}
-
-.nav-links {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-}
-
-.nav-user {
-  color: #e5e7eb;
+/* Buttons + Avatars (desktop) */
+.profile-btn img,
+.bottom-icon img {
+  border: none !important;
+  background: none !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  display: block;
+  width: 30px;
+  height: 30px;
+  border-radius: 999px !important;
 }
 
 /* ============================
-   MOBILE — OVERHAUL
+   MOBILE LAYOUT
 ============================= */
 
 @media (max-width: 768px) {
 
-  /* Hide desktop navbar sections */
+  /* Hide desktop navbar completely */
   .nav-leading,
   .nav-search,
   .nav-links {
@@ -101,11 +54,11 @@
     align-items: center;
     padding: 8px 12px;
     gap: 10px;
-    z-index: 999;
+    z-index: 999 !important;
     transition: transform 0.25s ease;
   }
 
-  .mobile-topbar.hidden {
+  .hidden-topbar {
     transform: translateY(-100%);
   }
 
@@ -123,12 +76,11 @@
     border: 1px solid #334155;
     border-radius: 999px;
     padding: 6px;
-    width: 36px;
-    height: 36px;
+    width: 38px;
+    height: 38px;
     display: grid;
     place-items: center;
   }
-
 
   /* ============================
      MOBILE BOTTOM NAVBAR
@@ -145,8 +97,7 @@
     display: flex;
     justify-content: space-around;
     align-items: center;
-    z-index: 998;
-    padding-bottom: env(safe-area-inset-bottom);
+    z-index: 998 !important;
   }
 
   .bottom-icon {
@@ -154,43 +105,44 @@
     background: none !important;
     border: none !important;
     font-size: 26px;
-    text-decoration: none;
     display: grid;
     place-items: center;
   }
-
-  /* Remove white box when avatar is shown */
-  .bottom-icon img {
-    width: 30px;
-    height: 30px;
-    border-radius: 999px !important;
-    border: none !important;
-    padding: 0 !important;
-    margin: 0 !important;
-    background: none !important;
-  }
-
 }
 
 /* ============================
-   SIDEBAR FIX — CLICK ISSUES
+   SIDEBAR FIX — clicks working
 ============================= */
 
-/* Overlay exists but does NOT block clicks by default */
+/* Dark background click-catcher */
 .sidebar-overlay {
-  pointer-events: none !important;
-  background: rgba(0,0,0,0.6);
+  position: fixed;
+  inset: 0;
+  background: rgba(2,6,23,0.55);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.25s;
+  z-index: 300;
 }
 
-/* When sidebar is open, it blocks clicks */
-.sidebar-open .sidebar-overlay {
-  pointer-events: auto !important;
+.sidebar-overlay.open {
+  opacity: 1;
+  pointer-events: auto; /* only overlay catches clicks */
 }
 
-/* Bottom navbar remains clickable always */
-.mobile-bottombar {
-  pointer-events: auto !important;
+/* Sidebar is above overlay */
+.sidebar {
+  position: fixed;
+  top: 0;
+  right: -320px;
+  width: 320px;
+  height: 100vh;
+  background: #0b1220;
+  border-left: 1px solid #334155;
+  transition: right 0.25s;
+  z-index: 301 !important;
 }
-.bottom-icon {
-  pointer-events: auto !important;
+
+.sidebar.open {
+  right: 0;
 }
