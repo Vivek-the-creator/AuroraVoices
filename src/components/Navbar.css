@@ -140,67 +140,65 @@
 }
 
 /* ============================
-   Mobile Layout - Single Row (< 768px)
+   PERFECT MOBILE NAVBAR FIX
 ============================= */
+
 @media (max-width: 768px) {
+
+  /* Container becomes vertical */
   .nav-content {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  /* Top row: profile + bell */
+  .nav-leading {
     width: 100%;
-    gap: 10px;
-    overflow-x: auto;   /* Enable scrolling horizontally */
-    padding: 10px 0;
-    white-space: nowrap; /* Prevent items from wrapping */
-  }
-
-  .nav-content::-webkit-scrollbar {
-    display: none; /* Hide scrollbar on iOS/Android */
-  }
-
-  /* Make every item inline */
-  .nav-leading,
-  .nav-search,
-  .nav-links {
     display: flex;
-    flex-direction: row;
-    align-items: center;
-    gap: 10px;
-    flex-shrink: 0; /* Prevent squishing */
+    justify-content: center;
+    gap: 20px;
   }
 
-  /* Compact search bar */
+  /* Search full width */
+  .nav-search {
+    width: 100%;
+  }
   .nav-search input {
-    width: 140px;
-    padding: 8px 12px;
-    font-size: 14px;
+    width: 100%;
   }
 
-  /* Hide text versions of Home & AddPost */
-  .nav-links .home-text,
-  .nav-links .addpost-text {
-    display: none;
+  /* Bottom nav row (icons + text + logout) */
+  .nav-links-inner {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 18px;
+    margin-top: 6px;
   }
 
-  /* Show icons only */
-  .nav-links .home-icon,
-  .nav-links .addpost-icon {
-    display: inline-flex !important;
-    font-size: 20px;
-    color: white;
+  /* Icon styles */
+  .home-icon svg,
+  .addpost-icon svg {
+    width: 26px;
+    height: 26px;
   }
 
-  /* Hi, Vivek text */
-  .nav-user {
-    font-size: 14px;
-    flex-shrink: 0;
+  /* Hide text on mobile */
+  .home-text,
+  .addpost-text {
+    display: none !important;
   }
-  .no-shrink { flex-shrink: 0; }
 
-  /* Buttons more compact */
-  .profile-btn,
-  .nav-bell-btn {
-    padding: 6px 8px;
-    flex-shrink: 0;
+  /* Logout button smaller on mobile */
+  .nav-links-inner .btn-danger {
+    padding: 4px 10px;
+    font-size: 12px;
+  }
+
+  /* Prevent wrapping */
+  .nav-links-inner * {
+    white-space: nowrap;
   }
 }
+
