@@ -1,28 +1,44 @@
-.sidebar-overlay { position: fixed; inset: 0; background: rgba(2,6,23,0.5); opacity: 0; pointer-events: none; transition: opacity .2s; z-index: 200; }
-.sidebar-overlay.open { opacity: 1; pointer-events: auto; }
-.sidebar { position: fixed; top: 0; right: -320px; width: 320px; height: 100vh; background: #0b1220; border-left: 1px solid #334155; transition: right .25s; z-index: 201; display: flex; flex-direction: column; }
-.sidebar.open { right: 0; }
-.sidebar-header { display: flex; align-items: center; gap: 12px; padding: 16px; border-bottom: 1px solid #334155; color: #e5e7eb; }
-.avatar { width: 40px; height: 40px; border-radius: 999px; display: grid; place-items: center; background: #0f172a; color: #a7f3d0; border: 1px solid #334155; overflow: hidden; }
-.sidebar-nav { display: flex; flex-direction: column; padding: 8px; gap: 6px; }
-.sidebar-link { color: #e5e7eb; text-decoration: none; padding: 12px 14px; border-radius: 8px; border: 1px solid transparent; }
-.sidebar-link:hover { border-color: #334155; background: rgba(148,163,184,0.08); }
-.muted { color: #93c5fd; }
-.spacer { flex: 1; }
-
-@media (max-width: 640px) {
-  .sidebar {
-    right: -100%;
-    width: 100%;
-  }
-  .sidebar.open {
-    right: 0;
-  }
+.sidebar-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(2,6,23,0.5);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity .25s;
+  z-index: 300;
 }
 
+.sidebar-overlay.open {
+  opacity: 1;
+  pointer-events: auto; /* only overlay catches click */
+}
 
+.sidebar {
+  position: fixed;
+  top: 0;
+  right: -320px;
+  width: 320px;
+  height: 100vh;
+  background: #0b1220;
+  border-left: 1px solid #334155;
+  transition: right .25s;
+  z-index: 301; /* above overlay */
+  display: flex;
+  flex-direction: column;
+}
 
+.sidebar.open {
+  right: 0;
+}
 
-
-
-
+/* Avatar: remove unwanted background */
+.avatar {
+  width: 45px;
+  height: 45px;
+  border-radius: 999px;
+  overflow: hidden;
+  border: none !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  background: none !important;
+}
