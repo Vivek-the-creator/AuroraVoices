@@ -1,10 +1,12 @@
+/* ============================
+   GENERAL DESKTOP NAVBAR
+============================= */
+
 .aurora-navbar {
   background: #0b1220;
   backdrop-filter: blur(10px);
   border-bottom: 1px solid #0f1a32;
 }
-
-/* brand removed per request */
 
 .nav-content {
   display: flex;
@@ -13,61 +15,10 @@
   padding: 12px 0;
 }
 
-.nav-search input {
-  width: 340px;
-  max-width: 40vw;
-  padding: 10px 14px;
-  border-radius: 999px;
-  border: 1px solid #e2e8f0;
-  background: #ffffff;
-  color: #0f172a;
-}
-
-.nav-search-wrapper {
-  position: relative;
-  display: inline-block;
-}
-
-.search-clear-btn {
-  position: absolute;
-  right: 10px;
-  top: 50%;
-  transform: translateY(-50%);
-  border: none;
-  background: transparent;
-  cursor: pointer;
-  color: #64748b;
-  font-size: 14px;
-  padding: 0;
-}
-
-.search-suggestions {
-  position: absolute;
-  left: 0;
-  right: 0;
-  margin-top: 4px;
-  background: #0b1220;
-  border-radius: 12px;
-  border: 1px solid #1f2937;
-  box-shadow: 0 10px 25px rgba(0,0,0,0.4);
-  z-index: 50;
-  max-height: 240px;
-  overflow-y: auto;
-}
-
-.search-suggestion-item {
-  width: 100%;
-  text-align: left;
-  padding: 8px 12px;
-  border: none;
-  background: transparent;
-  color: #e5e7eb;
-  cursor: pointer;
-  font-size: 0.9rem;
-}
-
-.search-suggestion-item:hover {
-  background: rgba(148, 163, 184, 0.2);
+.nav-leading {
+  display: flex;
+  align-items: center;
+  gap: 8px;
 }
 
 .profile-btn {
@@ -81,34 +32,6 @@
   place-items: center;
 }
 
-.nav-links {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-}
-
-.nav-link {
-  color: #93c5fd;
-  text-decoration: none;
-}
-
-.nav-user {
-  color: #e5e7eb;
-}
-
-.nav-leading {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-}
-
-.nav-icons {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  margin-left: 8px;
-}
-
 .nav-bell-btn {
   position: relative;
   border-radius: 999px;
@@ -119,13 +42,6 @@
   cursor: pointer;
   display: grid;
   place-items: center;
-  transition: background 0.15s ease, transform 0.1s ease, box-shadow 0.15s ease;
-}
-
-.nav-bell-btn:hover {
-  background: rgba(15, 23, 42, 0.9);
-  box-shadow: 0 0 0 1px rgba(59, 130, 246, 0.6);
-  transform: translateY(-1px);
 }
 
 .nav-bell-dot {
@@ -139,19 +55,40 @@
   box-shadow: 0 0 0 2px #0b1220;
 }
 
+.nav-search input {
+  width: 340px;
+  max-width: 40vw;
+  padding: 10px 14px;
+  border-radius: 999px;
+  border: 1px solid #e2e8f0;
+  background: white;
+  color: #0f172a;
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.nav-user {
+  color: #e5e7eb;
+}
+
 /* ============================
-   MOBILE TOP BAR
+   MOBILE — OVERHAUL
 ============================= */
+
 @media (max-width: 768px) {
 
-  /* hide original nav layout */
+  /* Hide desktop navbar sections */
   .nav-leading,
   .nav-search,
   .nav-links {
     display: none !important;
   }
 
-  /* Top bar container */
+  /* MOBILE TOP BAR */
   .mobile-topbar {
     position: fixed;
     top: 0;
@@ -168,28 +105,35 @@
     transition: transform 0.25s ease;
   }
 
-  /* Search field */
+  .mobile-topbar.hidden {
+    transform: translateY(-100%);
+  }
+
   .mobile-topbar input {
     flex: 1;
     padding: 8px 14px;
     border-radius: 12px;
     border: 1px solid #334155;
-    background: #fff;
+    background: white;
     color: #0f172a;
   }
 
-  /* Bell */
   .mobile-bell {
     background: none;
     border: 1px solid #334155;
-    border-radius: 50%;
-    padding: 8px;
-    color: white;
+    border-radius: 999px;
+    padding: 6px;
+    width: 36px;
+    height: 36px;
+    display: grid;
+    place-items: center;
   }
 
+
   /* ============================
-     MOBILE BOTTOM NAV
+     MOBILE BOTTOM NAVBAR
   ============================= */
+
   .mobile-bottombar {
     position: fixed;
     bottom: 0;
@@ -202,34 +146,51 @@
     justify-content: space-around;
     align-items: center;
     z-index: 998;
+    padding-bottom: env(safe-area-inset-bottom);
   }
 
   .bottom-icon {
-    color: white;
-    font-size: 24px;
+    color: white !important;
+    background: none !important;
+    border: none !important;
+    font-size: 26px;
     text-decoration: none;
+    display: grid;
+    place-items: center;
   }
-}
-/* HIDE DESKTOP NAV ON MOBILE */
-@media (max-width: 768px) {
-  .desktop-nav {
-    display: none !important;
+
+  /* Remove white box when avatar is shown */
+  .bottom-icon img {
+    width: 30px;
+    height: 30px;
+    border-radius: 999px !important;
+    border: none !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    background: none !important;
   }
+
 }
 
-/* Mobile top bar hide animation */
-.hidden-topbar {
-  transform: translateY(-100%);
-}
+/* ============================
+   SIDEBAR FIX — CLICK ISSUES
+============================= */
 
-/* Fix overlay blocking bottom navbar */
+/* Overlay exists but does NOT block clicks by default */
 .sidebar-overlay {
   pointer-events: none !important;
+  background: rgba(0,0,0,0.6);
 }
 
-.mobile-bottombar,
-.bottom-icon {
+/* When sidebar is open, it blocks clicks */
+.sidebar-open .sidebar-overlay {
   pointer-events: auto !important;
 }
 
-
+/* Bottom navbar remains clickable always */
+.mobile-bottombar {
+  pointer-events: auto !important;
+}
+.bottom-icon {
+  pointer-events: auto !important;
+}
