@@ -126,8 +126,25 @@ const Navbar = ({
           </div>
         </div>
         <div className="nav-links">
-          <Link to="/" className="nav-link">Home</Link>
-          <Link to="/add" className="nav-link">Add Post</Link>
+          {/* Icon versions for mobile */}
+          <Link to="/" className="nav-link home-icon" aria-label="Home">
+            {/* Replace with react-icons if you want */}
+            <svg width="22" height="22" stroke="white" fill="none" viewBox="0 0 24 24">
+              <path d="M3 10L12 3l9 7v10a1 1 0 0 1-1 1h-5V14H9v7H4a1 1 0 0 1-1-1V10z"
+                    strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+            </svg>
+          </Link>
+          
+          <Link to="/add" className="nav-link addpost-icon" aria-label="Add">
+            <svg width="22" height="22" stroke="white" fill="none" viewBox="0 0 24 24">
+              <path d="M12 5v14M5 12h14" strokeWidth="1.5" strokeLinecap="round"/>
+            </svg>
+          </Link>
+          
+          {/* Text versions (hidden on mobile) */}
+          <Link to="/" className="nav-link home-text">Home</Link>
+          <Link to="/add" className="nav-link addpost-text">Add Post</Link>
+
           {user ? (
             <>
               <span className="nav-user">Hi, {user.name}</span>
@@ -146,6 +163,9 @@ const Navbar = ({
     </nav>
   );
 };
+<Link to="/" className="nav-link home-icon no-shrink">...</Link>
+<Link to="/add" className="nav-link addpost-icon no-shrink">...</Link>
+<span className="nav-user no-shrink">Hi, {user.name}</span>
 
 export default Navbar;
 
