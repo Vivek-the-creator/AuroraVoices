@@ -38,6 +38,8 @@ const Navbar = ({
   return (
     <nav className="navbar aurora-navbar">
       <div className="container nav-content">
+
+        {/* Left side: Profile + Bell */}
         <div className="nav-leading">
           <button className="profile-btn" onClick={onToggleSidebar} aria-label="Profile">
             {user?.avatar ? (
@@ -47,13 +49,15 @@ const Navbar = ({
                 style={{ width: 28, height: 28, borderRadius: '999px', objectFit: 'cover' }}
               />
             ) : (
-              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
                 <circle cx="12" cy="12" r="9" stroke="#93c5fd" strokeWidth="1.5"/>
                 <circle cx="12" cy="9" r="3" stroke="#93c5fd" strokeWidth="1.5"/>
-                <path d="M6.5 18c1.6-2.5 4-3.5 5.5-3.5S16.9 15.5 18.5 18" stroke="#93c5fd" strokeWidth="1.5" strokeLinecap="round"/>
+                <path d="M6.5 18c1.6-2.5 4-3.5 5.5-3.5S16.9 15.5 18.5 18"
+                      stroke="#93c5fd" strokeWidth="1.5" strokeLinecap="round"/>
               </svg>
             )}
           </button>
+
           {user && (
             <button
               type="button"
@@ -61,13 +65,7 @@ const Navbar = ({
               onClick={onToggleNotifications}
               aria-label="Notifications"
             >
-              <svg
-                width="20"
-                height="20"
-                viewBox="0 0 24 24"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-              >
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
                 <path
                   d="M12 3C9.79086 3 8 4.79086 8 7V8.09807C8 8.93054 7.74289 9.74296 7.26303 10.4235L6.10557 12.0741C5.39286 13.1039 6.12938 14.5 7.37707 14.5H16.6229C17.8706 14.5 18.6071 13.1039 17.8944 12.0741L16.737 10.4235C16.2571 9.74296 16 8.93054 16 8.09807V7C16 4.79086 14.2091 3 12 3Z"
                   stroke="#93c5fd"
@@ -80,10 +78,13 @@ const Navbar = ({
                   strokeLinecap="round"
                 />
               </svg>
+
               {hasUnreadNotifications && <span className="nav-bell-dot" />}
             </button>
           )}
         </div>
+
+        {/* Search Bar */}
         <div className="nav-search">
           <div className="nav-search-wrapper">
             <input
@@ -95,6 +96,7 @@ const Navbar = ({
               onFocus={() => setIsSearchFocused(true)}
               onBlur={() => setIsSearchFocused(false)}
             />
+
             {isSearchFocused && searchQuery && (
               <button
                 type="button"
@@ -106,6 +108,7 @@ const Navbar = ({
                 ✕
               </button>
             )}
+
             {isSearchFocused && suggestions.length > 0 && (
               <div className="search-suggestions">
                 {suggestions.map((s) => (
@@ -114,7 +117,7 @@ const Navbar = ({
                     type="button"
                     className="search-suggestion-item"
                     onMouseDown={(e) => {
-                      e.preventDefault(); // keep input focused
+                      e.preventDefault();
                       handleSelectSuggestion(s);
                     }}
                   >
@@ -125,30 +128,33 @@ const Navbar = ({
             )}
           </div>
         </div>
-        <div className="nav-links">
-          {/* Icon versions for mobile */}
-          <Link to="/" className="nav-link home-icon" aria-label="Home">
-            {/* Replace with react-icons if you want */}
+
+        {/* RIGHT SIDE NAV-LINKS */}
+        <div className="nav-links-inner">
+
+          {/* MOBILE ICONS */}
+          <Link to="/" className="nav-link home-icon no-shrink" aria-label="Home">
             <svg width="22" height="22" stroke="white" fill="none" viewBox="0 0 24 24">
               <path d="M3 10L12 3l9 7v10a1 1 0 0 1-1 1h-5V14H9v7H4a1 1 0 0 1-1-1V10z"
                     strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
             </svg>
           </Link>
-          
-          <Link to="/add" className="nav-link addpost-icon" aria-label="Add">
+
+          <Link to="/add" className="nav-link addpost-icon no-shrink" aria-label="Add">
             <svg width="22" height="22" stroke="white" fill="none" viewBox="0 0 24 24">
               <path d="M12 5v14M5 12h14" strokeWidth="1.5" strokeLinecap="round"/>
             </svg>
           </Link>
-          
-          {/* Text versions (hidden on mobile) */}
+
+          {/* DESKTOP TEXT LINKS */}
           <Link to="/" className="nav-link home-text">Home</Link>
           <Link to="/add" className="nav-link addpost-text">Add Post</Link>
 
+          {/* USER INFO */}
           {user ? (
             <>
-              <span className="nav-user">Hi, {user.name}</span>
-              <div className="nav-icons">
+              <span className="nav-user no-shrink">Hi, {user.name}</span>
+              <div className="nav-icons no-shrink">
                 <button className="btn btn-danger" onClick={onLogout}>Logout</button>
               </div>
             </>
@@ -159,14 +165,10 @@ const Navbar = ({
             </>
           )}
         </div>
+
       </div>
     </nav>
   );
 };
-<Link to="/" className="nav-link home-icon no-shrink">...</Link>
-<Link to="/add" className="nav-link addpost-icon no-shrink">...</Link>
-<span className="nav-user no-shrink">Hi, {user.name}</span>
 
 export default Navbar;
-
-
