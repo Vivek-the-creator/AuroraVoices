@@ -1,0 +1,108 @@
+.notifications-sidebar {
+  position: fixed;
+  top: 0;
+  right: 0;
+  height: 100%;
+  width: 320px;
+  max-width: 90vw;
+  background: rgba(15, 23, 42, 0.98);
+  box-shadow: -8px 0 30px rgba(15, 23, 42, 0.9);
+  border-left: 1px solid rgba(148, 163, 184, 0.3);
+  z-index: 1200;
+  transform: translateX(0);
+  display: flex;
+  flex-direction: column;
+  color: #e5e7eb;
+}
+
+.notifications-sidebar-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem 1.25rem;
+  border-bottom: 1px solid rgba(148, 163, 184, 0.3);
+  background: linear-gradient(to right, rgba(30, 64, 175, 0.6), rgba(56, 189, 248, 0.4));
+}
+
+.notifications-title {
+  font-size: 1.05rem;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+}
+
+.notifications-close-btn {
+  border: none;
+  background: transparent;
+  color: #e5e7eb;
+  cursor: pointer;
+  font-size: 1.1rem;
+  padding: 0.15rem 0.35rem;
+  border-radius: 999px;
+  transition: background 0.15s ease, transform 0.1s ease;
+}
+
+.notifications-close-btn:hover {
+  background: rgba(15, 23, 42, 0.3);
+  transform: scale(1.05);
+}
+
+.notifications-list {
+  flex: 1;
+  overflow-y: auto;
+  padding: 0.75rem 0.75rem 1rem;
+}
+
+.notification-item {
+  padding: 0.65rem 0.75rem;
+  margin-bottom: 0.4rem;
+  border-radius: 0.75rem;
+  background: rgba(15, 23, 42, 0.8);
+  border: 1px solid rgba(55, 65, 81, 0.7);
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+
+.notification-item.unread {
+  background: radial-gradient(circle at top left, rgba(59, 130, 246, 0.3), rgba(15, 23, 42, 0.9));
+  border-color: rgba(59, 130, 246, 0.8);
+}
+
+.notification-main {
+  font-size: 0.87rem;
+  line-height: 1.35;
+}
+
+.notification-main strong {
+  color: #e5e7eb;
+}
+
+.notification-meta {
+  font-size: 0.75rem;
+  color: #9ca3af;
+  display: flex;
+  justify-content: space-between;
+  gap: 0.5rem;
+}
+
+.notification-empty {
+  padding: 1.5rem 1rem;
+  text-align: center;
+  font-size: 0.9rem;
+  color: #9ca3af;
+}
+
+.notifications-sidebar-footer {
+  padding: 0.5rem 1rem 0.8rem;
+  font-size: 0.7rem;
+  color: #6b7280;
+  border-top: 1px solid rgba(30, 64, 175, 0.7);
+}
+
+@media (max-width: 640px) {
+  .notifications-sidebar {
+    width: 100vw;
+  }
+}
+
+

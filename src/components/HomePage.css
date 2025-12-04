@@ -1,0 +1,138 @@
+.homepage {
+  min-height: calc(100vh - 200px);
+}
+
+.aurora-hero {
+  text-align: center;
+  margin-bottom: 60px;
+  padding: 48px 0;
+  background: linear-gradient(180deg, rgba(15,23,42,0.6), rgba(15,23,42,0.6));
+  color: #d1fae5;
+  border-radius: 16px;
+  margin-top: 20px;
+  border: 1px solid #334155;
+}
+
+.hero-logo img {
+  width: 250px;
+  height: 250px;
+  object-fit: contain;
+  margin-bottom: 12px;
+}
+
+.hero-title {
+  font-size: 2.25rem;
+  font-weight: 700;
+  margin-bottom: 12px;
+  color: #a7f3d0;
+}
+
+.hero-subtitle {
+  font-size: 1.25rem;
+  opacity: 0.9;
+}
+
+.hero-cta {
+  margin-top: 20px;
+}
+
+.homepage-title {
+  font-size: 3rem;
+  font-weight: 700;
+  margin-bottom: 16px;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.homepage-subtitle {
+  font-size: 1.25rem;
+  margin-bottom: 32px;
+  opacity: 0.9;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.section-title {
+  font-size: 2rem;
+  font-weight: 600;
+  margin-bottom: 32px;
+  color: #1e293b;
+  text-align: center;
+}
+
+.posts-section {
+  margin-top: 40px;
+}
+
+.posts-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 32px;
+  margin-top: 32px;
+}
+
+.empty-state {
+  text-align: center;
+  padding: 80px 20px;
+  background: white;
+  border-radius: 16px;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+}
+
+.empty-state-icon {
+  font-size: 4rem;
+  margin-bottom: 24px;
+}
+
+.empty-state h2 {
+  font-size: 2rem;
+  font-weight: 600;
+  margin-bottom: 16px;
+  color: #1e293b;
+}
+
+.empty-state p {
+  font-size: 1.125rem;
+  color: #6b7280;
+  margin-bottom: 32px;
+  max-width: 400px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+@media (max-width: 768px) {
+  .homepage-title {
+    font-size: 2.5rem;
+  }
+  
+  .homepage-subtitle {
+    font-size: 1.125rem;
+  }
+  
+  .posts-grid { grid-template-columns: repeat(2, 1fr); gap: 24px; }
+  
+  .homepage-header {
+    padding: 32px 20px;
+    margin-bottom: 40px;
+  }
+  
+  .empty-state {
+    padding: 60px 20px;
+  }
+  
+  .empty-state h2 {
+    font-size: 1.75rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .homepage-title {
+    font-size: 2rem;
+  }
+  
+  .homepage-subtitle {
+    font-size: 1rem;
+  }
+  
+  .posts-grid { grid-template-columns: 1fr; gap: 20px; }
+}
