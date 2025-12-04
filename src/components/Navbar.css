@@ -195,6 +195,7 @@
     font-size: 14px;
     flex-shrink: 0;
   }
+  .no-shrink { flex-shrink: 0; }
 
   /* Buttons more compact */
   .profile-btn,
