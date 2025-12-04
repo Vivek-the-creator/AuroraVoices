@@ -210,5 +210,26 @@
     text-decoration: none;
   }
 }
+/* HIDE DESKTOP NAV ON MOBILE */
+@media (max-width: 768px) {
+  .desktop-nav {
+    display: none !important;
+  }
+}
+
+/* Mobile top bar hide animation */
+.hidden-topbar {
+  transform: translateY(-100%);
+}
+
+/* Fix overlay blocking bottom navbar */
+.sidebar-overlay {
+  pointer-events: none !important;
+}
+
+.mobile-bottombar,
+.bottom-icon {
+  pointer-events: auto !important;
+}
 
 
