@@ -1,12 +1,10 @@
-/* ============================
-   GENERAL DESKTOP NAVBAR
-============================= */
-
 .aurora-navbar {
   background: #0b1220;
   backdrop-filter: blur(10px);
   border-bottom: 1px solid #0f1a32;
 }
+
+/* brand removed per request */
 
 .nav-content {
   display: flex;
@@ -15,134 +13,204 @@
   padding: 12px 0;
 }
 
-/* Buttons + Avatars (desktop) */
-.profile-btn img,
-.bottom-icon img {
-  border: none !important;
-  background: none !important;
-  padding: 0 !important;
-  margin: 0 !important;
-  display: block;
-  width: 30px;
-  height: 30px;
-  border-radius: 999px !important;
+.nav-search input {
+  width: 340px;
+  max-width: 40vw;
+  padding: 10px 14px;
+  border-radius: 999px;
+  border: 1px solid #e2e8f0;
+  background: #ffffff;
+  color: #0f172a;
 }
 
-/* ============================
-   MOBILE LAYOUT
-============================= */
-
-@media (max-width: 768px) {
-
-  /* Hide desktop navbar completely */
-  .nav-leading,
-  .nav-search,
-  .nav-links {
-    display: none !important;
-  }
-
-  /* MOBILE TOP BAR */
-  .mobile-topbar {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 52px;
-    background: #0b1220;
-    border-bottom: 1px solid #1e293b;
-    display: flex;
-    align-items: center;
-    padding: 8px 12px;
-    gap: 10px;
-    z-index: 999 !important;
-    transition: transform 0.25s ease;
-  }
-
-  .hidden-topbar {
-    transform: translateY(-100%);
-  }
-
-  .mobile-topbar input {
-    flex: 1;
-    padding: 8px 14px;
-    border-radius: 12px;
-    border: 1px solid #334155;
-    background: white;
-    color: #0f172a;
-  }
-
-  .mobile-bell {
-    background: none;
-    border: 1px solid #334155;
-    border-radius: 999px;
-    padding: 6px;
-    width: 38px;
-    height: 38px;
-    display: grid;
-    place-items: center;
-  }
-
-  /* ============================
-     MOBILE BOTTOM NAVBAR
-  ============================= */
-
-  .mobile-bottombar {
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    height: 58px;
-    background: #0b1220;
-    border-top: 1px solid #1e293b;
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    z-index: 998 !important;
-  }
-
-  .bottom-icon {
-    color: white !important;
-    background: none !important;
-    border: none !important;
-    font-size: 26px;
-    display: grid;
-    place-items: center;
-  }
+.nav-search-wrapper {
+  position: relative;
+  display: inline-block;
 }
 
-/* ============================
-   SIDEBAR FIX — clicks working
-============================= */
-
-/* Dark background click-catcher */
-.sidebar-overlay {
-  position: fixed;
-  inset: 0;
-  background: rgba(2,6,23,0.55);
-  opacity: 0;
-  pointer-events: none;
-  transition: opacity 0.25s;
-  z-index: 300;
+.search-clear-btn {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  color: #64748b;
+  font-size: 14px;
+  padding: 0;
 }
 
-.sidebar-overlay.open {
-  opacity: 1;
-  pointer-events: auto; /* only overlay catches clicks */
-}
-
-/* Sidebar is above overlay */
-.sidebar {
-  position: fixed;
-  top: 0;
-  right: -320px;
-  width: 320px;
-  height: 100vh;
-  background: #0b1220;
-  border-left: 1px solid #334155;
-  transition: right 0.25s;
-  z-index: 301 !important;
-}
-
-.sidebar.open {
+.search-suggestions {
+  position: absolute;
+  left: 0;
   right: 0;
+  margin-top: 4px;
+  background: #0b1220;
+  border-radius: 12px;
+  border: 1px solid #1f2937;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.4);
+  z-index: 50;
+  max-height: 240px;
+  overflow-y: auto;
+}
+
+.search-suggestion-item {
+  width: 100%;
+  text-align: left;
+  padding: 8px 12px;
+  border: none;
+  background: transparent;
+  color: #e5e7eb;
+  cursor: pointer;
+  font-size: 0.9rem;
+}
+
+.search-suggestion-item:hover {
+  background: rgba(148, 163, 184, 0.2);
+}
+
+.profile-btn {
+  background: transparent;
+  border: 1px solid #334155;
+  color: #e5e7eb;
+  border-radius: 999px;
+  padding: 6px 8px;
+  cursor: pointer;
+  display: grid;
+  place-items: center;
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.nav-link {
+  color: #93c5fd;
+  text-decoration: none;
+}
+
+.nav-user {
+  color: #e5e7eb;
+}
+
+.nav-leading {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.nav-icons {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-left: 8px;
+}
+
+.nav-bell-btn {
+  position: relative;
+  border-radius: 999px;
+  border: 1px solid #334155;
+  background: transparent;
+  color: #e5e7eb;
+  padding: 6px 8px;
+  cursor: pointer;
+  display: grid;
+  place-items: center;
+  transition: background 0.15s ease, transform 0.1s ease, box-shadow 0.15s ease;
+}
+
+.nav-bell-btn:hover {
+  background: rgba(15, 23, 42, 0.9);
+  box-shadow: 0 0 0 1px rgba(59, 130, 246, 0.6);
+  transform: translateY(-1px);
+}
+
+.nav-bell-dot {
+  position: absolute;
+  top: -1px;
+  right: -1px;
+  width: 9px;
+  height: 9px;
+  border-radius: 999px;
+  background: #ef4444;
+  box-shadow: 0 0 0 2px #0b1220;
+}
+
+/* ============================
+   Mobile Layout Fix - < 768px
+============================= */
+@media (max-width: 768px) {
+  .nav-content {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    gap: 12px;
+  }
+
+  /* Top row: user + bell */
+  .nav-leading {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  /* Search takes full width */
+  .nav-search {
+    width: 100%;
+  }
+
+  .nav-search input {
+    width: 100%;
+    max-width: 100%;
+    padding: 10px 16px;
+    font-size: 16px;
+  }
+
+  /* Navigation links arranged in grid */
+  .nav-links {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    width: 100%;
+    justify-items: center;
+    gap: 12px;
+    margin-top: 6px;
+  }
+
+  /* Slightly smaller buttons */
+  .profile-btn,
+  .nav-bell-btn {
+    padding: 6px 8px;
+  }
+}
+
+/* ============================
+   Compact View - < 480px
+============================= */
+@media (max-width: 480px) {
+  .nav-content {
+    gap: 10px;
+  }
+
+  .nav-links {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+  }
+
+  .nav-user {
+    font-size: 0.85rem;
+  }
+
+  .profile-btn,
+  .nav-bell-btn {
+    padding: 4px 6px;
+  }
+
+  .nav-search input {
+    padding: 8px 14px;
+    font-size: 15px;
+  }
 }
