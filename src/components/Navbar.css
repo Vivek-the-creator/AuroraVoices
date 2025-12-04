@@ -140,65 +140,75 @@
 }
 
 /* ============================
-   PERFECT MOBILE NAVBAR FIX
+   MOBILE TOP BAR
 ============================= */
-
 @media (max-width: 768px) {
 
-  /* Container becomes vertical */
-  .nav-content {
-    flex-direction: column;
-    gap: 12px;
-  }
-
-  /* Top row: profile + bell */
-  .nav-leading {
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    gap: 20px;
-  }
-
-  /* Search full width */
-  .nav-search {
-    width: 100%;
-  }
-  .nav-search input {
-    width: 100%;
-  }
-
-  /* Bottom nav row (icons + text + logout) */
-  .nav-links-inner {
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 18px;
-    margin-top: 6px;
-  }
-
-  /* Icon styles */
-  .home-icon svg,
-  .addpost-icon svg {
-    width: 26px;
-    height: 26px;
-  }
-
-  /* Hide text on mobile */
-  .home-text,
-  .addpost-text {
+  /* hide original nav layout */
+  .nav-leading,
+  .nav-search,
+  .nav-links {
     display: none !important;
   }
 
-  /* Logout button smaller on mobile */
-  .nav-links-inner .btn-danger {
-    padding: 4px 10px;
-    font-size: 12px;
+  /* Top bar container */
+  .mobile-topbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 52px;
+    background: #0b1220;
+    border-bottom: 1px solid #1e293b;
+    display: flex;
+    align-items: center;
+    padding: 8px 12px;
+    gap: 10px;
+    z-index: 999;
+    transition: transform 0.25s ease;
   }
 
-  /* Prevent wrapping */
-  .nav-links-inner * {
-    white-space: nowrap;
+  /* Search field */
+  .mobile-topbar input {
+    flex: 1;
+    padding: 8px 14px;
+    border-radius: 12px;
+    border: 1px solid #334155;
+    background: #fff;
+    color: #0f172a;
+  }
+
+  /* Bell */
+  .mobile-bell {
+    background: none;
+    border: 1px solid #334155;
+    border-radius: 50%;
+    padding: 8px;
+    color: white;
+  }
+
+  /* ============================
+     MOBILE BOTTOM NAV
+  ============================= */
+  .mobile-bottombar {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 58px;
+    background: #0b1220;
+    border-top: 1px solid #1e293b;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    z-index: 998;
+  }
+
+  .bottom-icon {
+    color: white;
+    font-size: 24px;
+    text-decoration: none;
   }
 }
+
 
