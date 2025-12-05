@@ -70,3 +70,11 @@ export async function toggleFollowUser(targetUserId, followerId) {
   return handle(res);
 }
 
+export async function updateProfile(userId, profile) {
+  const res = await fetch(`${API_BASE}/users/update/${userId}`, {
+    method: 'PUT',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(profile),
+  });
+  return handle(res);
+}
