@@ -73,19 +73,34 @@ const notificationSchema = new mongoose.Schema(
 notificationSchema.index({ createdAt: 1 }, { expireAfterSeconds: 60 * 60 * 12 });
 
 const userSchema = new mongoose.Schema({
-  id: { type: String, required: true, unique: true }, // same id used on frontend
+  id: { type: String, required: true, unique: true },
+
   name: { type: String, required: true },
   email: { type: String, required: true },
   emailLower: { type: String, required: true, unique: true, sparse: true },
+
   username: { type: String, required: true },
   usernameLower: { type: String, required: true, unique: true, sparse: true },
+
   passwordHash: { type: String, required: true },
+
   securityQuestion: { type: String, required: true },
   securityAnswerHash: { type: String, required: true },
-  followers: { type: [String], default: [] }, // userIds that follow this user
-  following: { type: [String], default: [] }, // userIds this user follows
+
+  // ✅ ADD THESE FIELDS
+  age: { type: String, default: '' },
+  gender: { type: String, default: '' },
+  mobile: { type: String, default: '' },
+  hobbies: { type: String, default: '' },
+  interests: { type: String, default: '' },
+  avatar: { type: String, default: '' },
+
+  followers: { type: [String], default: [] },
+  following: { type: [String], default: [] },
+
   createdAt: { type: Date, default: Date.now },
 });
+
 
 const Post = mongoose.model('Post', postSchema);
 const User = mongoose.model('User', userSchema);
