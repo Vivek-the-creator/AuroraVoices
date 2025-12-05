@@ -206,10 +206,6 @@ box-shadow: 0 0 0 2px #0b1220;
     gap: 8px;
   }
 
-  /* BOTTOM NAV: dark blue background, white icons */
-  @media (max-width: 768px) {
-  /* existing rules ... */
-
   /* BOTTOM NAV: new color palette */
   .mobile-bottom-nav {
     position: fixed;
