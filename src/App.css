@@ -131,3 +131,9 @@
     text-align: center;
   }
 }
+@media (max-width: 768px) {
+  /* Extra space so content is not hidden behind the fixed mobile bottom navbar */
+  .main-content {
+    padding-bottom: 80px; /* slightly more than bottom nav height */
+  }
+}
