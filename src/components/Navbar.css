@@ -206,14 +206,14 @@ box-shadow: 0 0 0 2px #0b1220;
     gap: 8px;
   }
 
-  /* BOTTOM NAV: new color palette */
+  /* BOTTOM NAV: dark blue background, white icons */
   .mobile-bottom-nav {
     position: fixed;
     bottom: 0;
     left: 0;
     right: 0;
     height: 56px;
-    background: #0b1220;       /* darker navy */
+    background: #020617;              /* dark blue bar */
     border-top: 1px solid #1f2937;
     display: flex;
     align-items: center;
@@ -224,22 +224,28 @@ box-shadow: 0 0 0 2px #0b1220;
   .mobile-bottom-item {
     flex: 1;
     height: 100%;
-    color: #f9fafb;            /* soft white for icons */
+    color: #f9fafb;                   /* soft white */
     display: flex;
     align-items: center;
     justify-content: center;
     text-decoration: none;
   }
 
-  .mobile-bottom-item svg path,
-  .mobile-bottom-item svg circle {
-    stroke: #f9fafb;
+  /* force all icon strokes to white */
+  .mobile-bottom-item svg {
+    width: 24px;
+    height: 24px;
+  }
+
+  .mobile-bottom-item svg * {
+    stroke: #f9fafb !important;
+    fill: none;
   }
 
   .mobile-bottom-profile-btn {
-    background: rgba(15, 23, 42, 0.85);
+    background: transparent;
     border-radius: 999px;
-    border: 1px solid #1d4ed8; /* subtle blue outline */
+    border: 1px solid #334155;
     padding: 4px;
     display: grid;
     place-items: center;
