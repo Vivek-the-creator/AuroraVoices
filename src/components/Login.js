@@ -49,8 +49,15 @@ const Login = ({ onLogin }) => {
         identifier: formData.identifier.trim(),
         password: formData.password,
       });
+      
+      // ✅ Save ONLY userId (not full object)
+      localStorage.setItem('userId', user.id);
+      
+      // ✅ Set full user in memory
       onLogin(user);
+      
       navigate('/');
+
     } catch (err) {
       setServerError(err.message);
     } finally {
