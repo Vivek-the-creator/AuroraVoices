@@ -75,20 +75,23 @@ const MyProfile = ({ user, onUpdateUser }) => {
   };
 
 
-  const handleSave = async () => {
-    try {
-      const updatedUser = await updateProfile(user.id, profile);
-  
-      if (onUpdateUser){
-        onUpdateUser(updatedUser);
-      }// ✅ refresh global user everywhere
-      localStorage.setItem('user', JSON.stringify(updatedUser)); // optional cache
-  
-      alert('Profile saved successfully');
-    } catch (err) {
-      alert(err.message || 'Failed to save profile');
+const handleSave = async () => {
+  try {
+    const updatedUser = await updateProfile(user.id, profile);
+
+    if (onUpdateUser) {
+      onUpdateUser(updatedUser); // ✅ update global state only
     }
-  };
+
+    // ❌ DO NOT STORE USER IN LOCALSTORAGE (AVATAR IS TOO LARGE)
+    // localStorage.setItem('user', JSON.stringify(updatedUser));
+
+    alert('Profile saved successfully');
+  } catch (err) {
+    alert(err.message || 'Failed to save profile');
+  }
+};
+
 
 
   const handleAvatarClick = () => {
