@@ -1,142 +1,140 @@
 .aurora-navbar {
-background: #0b1220;
-backdrop-filter: blur(10px);
-border-bottom: 1px solid #0f1a32;
+  background: #0b1220;
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid #0f1a32;
 }
 
-/* brand removed per request */
-
 .nav-content {
-display: flex;
-align-items: center;
-justify-content: space-between;
-padding: 12px 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 0;
 }
 
 .nav-search input {
-width: 340px;
-max-width: 40vw;
-padding: 10px 14px;
-border-radius: 999px;
-border: 1px solid #e2e8f0;
-background: #ffffff;
-color: #0f172a;
+  width: 340px;
+  max-width: 40vw;
+  padding: 10px 14px;
+  border-radius: 999px;
+  border: 1px solid #e2e8f0;
+  background: #ffffff;
+  color: #0f172a;
 }
 
 .nav-search-wrapper {
-position: relative;
-display: inline-block;
+  position: relative;
+  display: inline-block;
 }
 
 .search-clear-btn {
-position: absolute;
-right: 10px;
-top: 50%;
-transform: translateY(-50%);
-border: none;
-background: transparent;
-cursor: pointer;
-color: #64748b;
-font-size: 14px;
-padding: 0;
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  color: #64748b;
+  font-size: 14px;
+  padding: 0;
 }
 
 .search-suggestions {
-position: absolute;
-left: 0;
-right: 0;
-margin-top: 4px;
-background: #0b1220;
-border-radius: 12px;
-border: 1px solid #1f2937;
-box-shadow: 0 10px 25px rgba(0,0,0,0.4);
-z-index: 50;
-max-height: 240px;
-overflow-y: auto;
+  position: absolute;
+  left: 0;
+  right: 0;
+  margin-top: 4px;
+  background: #0b1220;
+  border-radius: 12px;
+  border: 1px solid #1f2937;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.4);
+  z-index: 50;
+  max-height: 240px;
+  overflow-y: auto;
 }
 
 .search-suggestion-item {
-width: 100%;
-text-align: left;
-padding: 8px 12px;
-border: none;
-background: transparent;
-color: #e5e7eb;
-cursor: pointer;
-font-size: 0.9rem;
+  width: 100%;
+  text-align: left;
+  padding: 8px 12px;
+  border: none;
+  background: transparent;
+  color: #e5e7eb;
+  cursor: pointer;
+  font-size: 0.9rem;
 }
 
 .search-suggestion-item:hover {
-background: rgba(148, 163, 184, 0.2);
+  background: rgba(148, 163, 184, 0.2);
 }
 
 .profile-btn {
-background: transparent;
-border: 1px solid #334155;
-color: #e5e7eb;
-border-radius: 999px;
-padding: 6px 8px;
-cursor: pointer;
-display: grid;
-place-items: center;
+  background: transparent;
+  border: 1px solid #334155;
+  color: #e5e7eb;
+  border-radius: 999px;
+  padding: 6px 8px;
+  cursor: pointer;
+  display: grid;
+  place-items: center;
 }
 
 .nav-links {
-display: flex;
-align-items: center;
-gap: 12px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
 }
 
 .nav-link {
-color: #93c5fd;
-text-decoration: none;
+  color: #93c5fd;
+  text-decoration: none;
 }
 
 .nav-user {
-color: #e5e7eb;
+  color: #e5e7eb;
 }
 
 .nav-leading {
-display: flex;
-align-items: center;
-gap: 8px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
 }
 
 .nav-icons {
-display: flex;
-align-items: center;
-gap: 8px;
-margin-left: 8px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-left: 8px;
 }
 
 .nav-bell-btn {
-position: relative;
-border-radius: 999px;
-border: 1px solid #334155;
-background: transparent;
-color: #e5e7eb;
-padding: 6px 8px;
-cursor: pointer;
-display: grid;
-place-items: center;
-transition: background 0.15s ease, transform 0.1s ease, box-shadow 0.15s ease;
+  position: relative;
+  border-radius: 999px;
+  border: 1px solid #334155;
+  background: transparent;
+  color: #e5e7eb;
+  padding: 6px 8px;
+  cursor: pointer;
+  display: grid;
+  place-items: center;
+  transition: background 0.15s ease, transform 0.1s ease, box-shadow 0.15s ease;
 }
 
 .nav-bell-btn:hover {
-background: rgba(15, 23, 42, 0.9);
-box-shadow: 0 0 0 1px rgba(59, 130, 246, 0.6);
-transform: translateY(-1px);
+  background: rgba(15, 23, 42, 0.9);
+  box-shadow: 0 0 0 1px rgba(59, 130, 246, 0.6);
+  transform: translateY(-1px);
 }
 
 .nav-bell-dot {
-position: absolute;
-top: -1px;
-right: -1px;
-width: 9px;
-height: 9px;
-border-radius: 999px;
-background: #ef4444;
-box-shadow: 0 0 0 2px #0b1220;
+  position: absolute;
+  top: -1px;
+  right: -1px;
+  width: 9px;
+  height: 9px;
+  border-radius: 999px;
+  background: #ef4444;
+  box-shadow: 0 0 0 2px #0b1220;
 }
 
 /* ============================
@@ -148,7 +146,7 @@ box-shadow: 0 0 0 2px #0b1220;
     display: none;
   }
 
-  /* TOP NAV: search + bell OR login/register */
+  /* TOP NAV: hidden by default, shows search for logged-in OR auth buttons */
   .mobile-top-nav {
     position: sticky;
     top: 0;
@@ -158,7 +156,6 @@ box-shadow: 0 0 0 2px #0b1220;
     padding: 8px 12px;
     display: flex;
     align-items: center;
-    gap: 8px;
   }
 
   .mobile-top-nav.hidden {
@@ -180,23 +177,31 @@ box-shadow: 0 0 0 2px #0b1220;
     font-size: 15px;
   }
 
-  .mobile-top-bell-btn {
-    position: relative;
-    border-radius: 999px;
-    border: 1px solid #334155;
+  .mobile-search-clear-btn {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    border: none;
     background: transparent;
-    color: #e5e7eb;
-    padding: 6px 8px;
     cursor: pointer;
-    display: grid;
-    place-items: center;
-    transition: background 0.15s ease, transform 0.1s ease, box-shadow 0.15s ease;
+    color: #64748b;
+    font-size: 14px;
+    padding: 0;
   }
 
-  .mobile-top-bell-btn:hover {
-    background: rgba(15, 23, 42, 0.9);
-    box-shadow: 0 0 0 1px rgba(59, 130, 246, 0.6);
-    transform: translateY(-1px);
+  .mobile-search-suggestions {
+    position: absolute;
+    left: 0;
+    right: 0;
+    margin-top: 4px;
+    background: #0b1220;
+    border-radius: 12px;
+    border: 1px solid #1f2937;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.4);
+    z-index: 50;
+    max-height: 240px;
+    overflow-y: auto;
   }
 
   .mobile-top-auth-actions {
@@ -206,14 +211,14 @@ box-shadow: 0 0 0 2px #0b1220;
     gap: 8px;
   }
 
-  /* BOTTOM NAV: dark blue background, white icons */
+  /* BOTTOM NAV: 5 items layout */
   .mobile-bottom-nav {
     position: fixed;
     bottom: 0;
     left: 0;
     right: 0;
-    height: 56px;
-    background: #020617;              /* dark blue bar */
+    height: 70px;
+    background: #020617;
     border-top: 1px solid #1f2937;
     display: flex;
     align-items: center;
@@ -224,16 +229,15 @@ box-shadow: 0 0 0 2px #0b1220;
   .mobile-bottom-item {
     flex: 1;
     height: 100%;
-    color: #f9fafb;                   /* soft white */
+    color: #f9fafb;
     display: flex;
     align-items: center;
     justify-content: center;
     text-decoration: none;
-    background: transparent;          /* remove white card */
-    border: none;                     /* no borders either */
+    background: transparent;
+    border: none;
   }
 
-  /* force all icon strokes to white and remove fills */
   .mobile-bottom-item svg {
     width: 24px;
     height: 24px;
@@ -258,5 +262,16 @@ box-shadow: 0 0 0 2px #0b1220;
     height: 26px;
     border-radius: 999px;
     object-fit: cover;
+  }
+
+  .mobile-bell-dot {
+    position: absolute;
+    top: -2px;
+    right: -2px;
+    width: 9px;
+    height: 9px;
+    border-radius: 999px;
+    background: #ef4444;
+    box-shadow: 0 0 0 2px #020617;
   }
 }
