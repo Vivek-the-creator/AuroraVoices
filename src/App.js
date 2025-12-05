@@ -36,6 +36,20 @@ const persistUserToStorage = (user) => {
 function App() {
   const [posts, setPosts] = useState([]);
   const [user, setUser] = useState(null);
+  useEffect(() => {
+    const userId = localStorage.getItem('userId');
+    if (!userId) return;
+  
+    fetch(`${process.env.REACT_APP_API_BASE}/users/${userId}`)
+      .then(res => res.json())
+      .then(data => {
+        setUser(data); // ✅ avatar restored from DB
+      })
+      .catch(() => {
+        localStorage.removeItem('userId');
+      });
+  }, []);
+
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const [isNotificationsOpen, setIsNotificationsOpen] = useState(false);
   const [notifications, setNotifications] = useState([]);
