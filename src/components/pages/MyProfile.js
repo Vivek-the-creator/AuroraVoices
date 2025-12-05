@@ -156,8 +156,26 @@ const MyProfile = ({ user, onUpdateUser }) => {
       <div className="card p-4" style={{ marginTop: 24, background: 'rgba(15,23,42,0.7)', border: '1px solid #334155', color: '#e5e7eb', borderRadius: 16 }}>
         <h2 style={{ marginBottom: 16, color: '#a7f3d0' }}>My Profile</h2>
 
-        <div style={{ display: 'flex', gap: 24, alignItems: 'flex-start', flexWrap: 'wrap' }}>
-          <div style={{ width: 120, position: 'relative' }}>
+        <div
+          style={{
+            display: 'flex',
+            gap: 24,
+            alignItems: 'flex-start',
+            flexWrap: 'wrap',
+            flexDirection: window.innerWidth < 768 ? 'column' : 'row'
+          }}
+        >
+
+          <div
+            style={{
+              width: window.innerWidth < 768 ? '100%' : 120,
+              position: 'relative',
+              display: 'flex',
+              flexDirection: 'column',
+              alignItems: 'center'
+            }}
+          >
+
             <button
               type="button"
               onClick={handleAvatarClick}
@@ -245,7 +263,19 @@ const MyProfile = ({ user, onUpdateUser }) => {
             </p>
           </div>
 
-          <div style={{ flex: 1, minWidth: 260, display: 'grid', gridTemplateColumns: 'repeat(2, minmax(220px, 1fr))', gap: 16 }}>
+          <div
+            style={{
+              flex: 1,
+              minWidth: 260,
+              display: 'grid',
+              gridTemplateColumns: window.innerWidth < 768
+                ? '1fr'
+                : 'repeat(2, minmax(220px, 1fr))',
+              gap: 16,
+              width: '100%'
+            }}
+          >
+
             <div>
               <label className="form-label" style={{ color: '#93c5fd' }}>Name</label>
               <input className="form-input" name="name" value={profile.name} onChange={handleChange} />
