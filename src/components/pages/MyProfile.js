@@ -1,5 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react';
-import { changePassword, PASSWORD_HELPER, validatePassword } from '../../services/usersService';
+import { changePassword, PASSWORD_HELPER, validatePassword, updateProfile } from '../../services/usersService';
+
 
 const MyProfile = ({ user, onUpdateUser }) => {
   const [profile, setProfile] = useState({
@@ -23,24 +24,20 @@ const MyProfile = ({ user, onUpdateUser }) => {
 
   useEffect(() => {
     if (!user) return;
-    const saved = localStorage.getItem(`profile:${user.id}`);
-    const base = { name: user.name, email: user.email, username: user.username };
-    let nextProfile = base;
-    try {
-      if (saved) {
-        const parsed = JSON.parse(saved);
-        nextProfile = { ...base, ...parsed };
-      }
-    } catch {
-      nextProfile = base;
-    }
-    setProfile(nextProfile);
+  
+    setProfile({
+      name: user.name || '',
+      email: user.email || '',
+      username: user.username || '',
+      age: user.age || '',
+      gender: user.gender || '',
+      mobile: user.mobile || '',
+      hobbies: user.hobbies || '',
+      interests: user.interests || '',
+      avatar: user.avatar || ''
+    });
+  }, [user]);
 
-    // Ensure global user avatar stays in sync with stored profile avatar
-    if (nextProfile.avatar && onUpdateUser && user.avatar !== nextProfile.avatar) {
-      onUpdateUser({ avatar: nextProfile.avatar });
-    }
-  }, [user, onUpdateUser]);
 
   if (!user) {
     return (
@@ -52,44 +49,47 @@ const MyProfile = ({ user, onUpdateUser }) => {
     );
   }
 
-  const followersCount = Array.isArray(user.followers)
-    ? user.followers.length
-    : user.followersCount || 0;
+  const followersCount = user?.followers?.length || 0;
 
   const handleChange = (e) => {
     const { name, value, files } = e.target;
+  
     if (name === 'avatar' && files && files[0]) {
       const reader = new FileReader();
       reader.onload = () => {
         const next = { ...profile, avatar: reader.result };
         setProfile(next);
-        localStorage.setItem(`profile:${user.id}`, JSON.stringify(next));
-        // close avatar menu if open
-        setIsAvatarMenuOpen(false);
-        // immediately sync avatar to global user so navbar/sidebar update
+  
+        // ✅ only update UI now; DB update happens on SAVE
         if (onUpdateUser) {
           onUpdateUser({ avatar: reader.result });
         }
+  
+        setIsAvatarMenuOpen(false);
       };
       reader.readAsDataURL(files[0]);
       return;
     }
-    const next = { ...profile, [name]: value };
-    setProfile(next);
-    localStorage.setItem(`profile:${user.id}`, JSON.stringify(next));
+  
+    setProfile({ ...profile, [name]: value });
   };
 
-  const handleSave = () => {
-    // Update top-level user name (and optionally email if edited)
-    if (onUpdateUser) {
-      onUpdateUser({ name: profile.name, email: profile.email, avatar: profile.avatar });
+
+  const handleSave = async () => {
+    try {
+      const updatedUser = await updateProfile(user.id, profile);
+  
+      if (onUpdateUser){
+        onUpdateUser(updatedUser);
+      }// ✅ refresh global user everywhere
+      localStorage.setItem('user', JSON.stringify(updatedUser)); // optional cache
+  
+      alert('Profile saved successfully');
+    } catch (err) {
+      alert(err.message || 'Failed to save profile');
     }
-    // Persist extended profile
-    if (user) {
-      localStorage.setItem(`profile:${user.id}`, JSON.stringify(profile));
-    }
-    alert('Profile saved');
   };
+
 
   const handleAvatarClick = () => {
     if (!profile.avatar) {
