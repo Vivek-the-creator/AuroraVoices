@@ -207,30 +207,56 @@ box-shadow: 0 0 0 2px #0b1220;
   }
 
   /* BOTTOM NAV: dark blue background, white icons */
-  /* ============================
-     MOBILE BOTTOM NAVBAR
-  ============================= */
-
-  .mobile-bottombar {
+  .mobile-bottom-nav {
     position: fixed;
     bottom: 0;
     left: 0;
     right: 0;
-    height: 58px;
-    background: #0b1220;
-    border-top: 1px solid #1e293b;
+    height: 56px;
+    background: #020617;              /* dark blue bar */
+    border-top: 1px solid #1f2937;
     display: flex;
-    justify-content: space-around;
     align-items: center;
-    z-index: 998 !important;
+    justify-content: space-around;
+    z-index: 50;
   }
 
-  .bottom-icon {
-    color: white !important;
-    background: none !important;
-    border: none !important;
-    font-size: 26px;
+  .mobile-bottom-item {
+    flex: 1;
+    height: 100%;
+    color: #f9fafb;                   /* soft white */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    background: transparent;          /* remove white card */
+    border: none;                     /* no borders either */
+  }
+
+  /* force all icon strokes to white and remove fills */
+  .mobile-bottom-item svg {
+    width: 24px;
+    height: 24px;
+  }
+
+  .mobile-bottom-item svg * {
+    stroke: #f9fafb !important;
+    fill: none !important;
+  }
+
+  .mobile-bottom-profile-btn {
+    background: transparent;
+    border-radius: 999px;
+    border: 1px solid #334155;
+    padding: 4px;
     display: grid;
     place-items: center;
+  }
+
+  .mobile-bottom-profile-btn img {
+    width: 26px;
+    height: 26px;
+    border-radius: 999px;
+    object-fit: cover;
   }
 }
