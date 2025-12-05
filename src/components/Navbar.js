@@ -79,6 +79,7 @@ const Navbar = ({
   return (
     <>
       {/* Desktop / tablet original navbar (unchanged layout) */}
+  {!isMobile && (
       <nav className="navbar aurora-navbar">
         <div className="container nav-content">
           <div className="nav-leading">
@@ -238,6 +239,7 @@ const Navbar = ({
           </div>
         </div>
       </nav>
+)}
 
       {/* MOBILE: TOP NAVBAR */}
       {isMobile && isHome && showMobileTop && !isProfileOpen && (
