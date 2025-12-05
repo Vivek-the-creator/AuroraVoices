@@ -18,7 +18,7 @@ const Navbar = ({
   const [isSearchFocused, setIsSearchFocused] = useState(false);
   const inputRef = useRef(null);
 
-  // mobile top bar visibility
+  // mobile top visibility & profile open state
   const [showMobileTop, setShowMobileTop] = useState(true);
   const lastScrollY = useRef(0);
   const [isProfileOpen, setIsProfileOpen] = useState(false);
@@ -26,7 +26,7 @@ const Navbar = ({
   const isHome = location.pathname === '/';
 
   useEffect(() => {
-    // when route changes, reset state
+    // reset when route changes
     setShowMobileTop(true);
     setIsProfileOpen(false);
     lastScrollY.current = window.scrollY || 0;
@@ -37,7 +37,6 @@ const Navbar = ({
 
     const handleScroll = () => {
       const currentY = window.scrollY || 0;
-      // hide as soon as user starts scrolling down from top
       if (currentY > 0 && currentY > lastScrollY.current) {
         setShowMobileTop(false);
       }
@@ -71,15 +70,15 @@ const Navbar = ({
     if (onToggleSidebar) {
       onToggleSidebar();
     }
-    // hide mobile top when profile is opened
     setShowMobileTop(false);
   };
 
-  const isMobile = typeof window !== 'undefined' && window.innerWidth <= 768;
+  const isMobile =
+    typeof window !== 'undefined' && window.innerWidth <= 768;
 
   return (
     <>
-      {/* Desktop / tablet original navbar */}
+      {/* Desktop / tablet original navbar (unchanged layout) */}
       <nav className="navbar aurora-navbar">
         <div className="container nav-content">
           <div className="nav-leading">
@@ -92,7 +91,12 @@ const Navbar = ({
                 <img
                   src={user.avatar}
                   alt="Profile"
-                  style={{ width: 28, height: 28, borderRadius: '999px', objectFit: 'cover' }}
+                  style={{
+                    width: 28,
+                    height: 28,
+                    borderRadius: '999px',
+                    objectFit: 'cover',
+                  }}
                 />
               ) : (
                 <svg
@@ -102,8 +106,20 @@ const Navbar = ({
                   fill="none"
                   xmlns="http://www.w3.org/2000/svg"
                 >
-                  <circle cx="12" cy="12" r="9" stroke="#93c5fd" strokeWidth="1.5" />
-                  <circle cx="12" cy="9" r="3" stroke="#93c5fd" strokeWidth="1.5" />
+                  <circle
+                    cx="12"
+                    cy="12"
+                    r="9"
+                    stroke="#93c5fd"
+                    strokeWidth="1.5"
+                  />
+                  <circle
+                    cx="12"
+                    cy="9"
+                    r="3"
+                    stroke="#93c5fd"
+                    strokeWidth="1.5"
+                  />
                   <path
                     d="M6.5 18c1.6-2.5 4-3.5 5.5-3.5S16.9 15.5 18.5 18"
                     stroke="#93c5fd"
@@ -185,77 +201,111 @@ const Navbar = ({
             </div>
           </div>
           <div className="nav-links">
-            <Link to="/" className="nav-link">Home</Link>
-            <Link to="/add" className="nav-link">Add Post</Link>
+            <Link to="/" className="nav-link">
+              Home
+            </Link>
+            <Link to="/add" className="nav-link">
+              Add Post
+            </Link>
             {user ? (
               <>
                 <span className="nav-user">Hi, {user.name}</span>
                 <div className="nav-icons">
-                  <button className="btn btn-danger" onClick={onLogout}>Logout</button>
+                  <button
+                    className="btn btn-danger"
+                    onClick={onLogout}
+                  >
+                    Logout
+                  </button>
                 </div>
               </>
             ) : (
               <>
-                <button className="btn btn-secondary" onClick={() => navigate('/login')}>Login</button>
-                <button className="btn btn-primary" onClick={() => navigate('/register')}>Register</button>
+                <button
+                  className="btn btn-secondary"
+                  onClick={() => navigate('/login')}
+                >
+                  Login
+                </button>
+                <button
+                  className="btn btn-primary"
+                  onClick={() => navigate('/register')}
+                >
+                  Register
+                </button>
               </>
             )}
           </div>
         </div>
       </nav>
 
-      {/* Mobile top navbar: only on home, only before scroll, hidden when profile open */}
+      {/* MOBILE: TOP NAVBAR */}
       {isMobile && isHome && showMobileTop && !isProfileOpen && (
         <div className="mobile-top-nav">
-          <div className="mobile-top-search-wrapper">
-            <input
-              type="text"
-              placeholder="Search by title, author, username, or genre..."
-              value={searchQuery}
-              onChange={(e) => setSearchQuery(e.target.value)}
-            />
-          </div>
-          {user && (
-            <button
-              type="button"
-              className="mobile-top-bell-btn"
-              onClick={onToggleNotifications}
-              aria-label="Notifications"
-            >
-              <svg
-                width="20"
-                height="20"
-                viewBox="0 0 24 24"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
+          {user ? (
+            <>
+              <div className="mobile-top-search-wrapper">
+                <input
+                  type="text"
+                  placeholder="Search by title, author, username, or genre..."
+                  value={searchQuery}
+                  onChange={(e) => setSearchQuery(e.target.value)}
+                />
+              </div>
+              <button
+                type="button"
+                className="mobile-top-bell-btn"
+                onClick={onToggleNotifications}
+                aria-label="Notifications"
               >
-                <path
-                  d="M12 3C9.79086 3 8 4.79086 8 7V8.09807C8 8.93054 7.74289 9.74296 7.26303 10.4235L6.10557 12.0741C5.39286 13.1039 6.12938 14.5 7.37707 14.5H16.6229C17.8706 14.5 18.6071 13.1039 17.8944 12.0741L16.737 10.4235C16.2571 9.74296 16 8.93054 16 8.09807V7C16 4.79086 14.2091 3 12 3Z"
-                  stroke="#93c5fd"
-                  strokeWidth="1.5"
-                />
-                <path
-                  d="M10 16C10.2706 17.1652 11.3065 18 12.5 18C13.6935 18 14.7294 17.1652 15 16"
-                  stroke="#93c5fd"
-                  strokeWidth="1.5"
-                  strokeLinecap="round"
-                />
-              </svg>
-              {hasUnreadNotifications && <span className="nav-bell-dot" />}
-            </button>
+                <svg
+                  width="20"
+                  height="20"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M12 3C9.79086 3 8 4.79086 8 7V8.09807C8 8.93054 7.74289 9.74296 7.26303 10.4235L6.10557 12.0741C5.39286 13.1039 6.12938 14.5 7.37707 14.5H16.6229C17.8706 14.5 18.6071 13.1039 17.8944 12.0741L16.737 10.4235C16.2571 9.74296 16 8.93054 16 8.09807V7C16 4.79086 14.2091 3 12 3Z"
+                    stroke="#93c5fd"
+                    strokeWidth="1.5"
+                  />
+                  <path
+                    d="M10 16C10.2706 17.1652 11.3065 18 12.5 18C13.6935 18 14.7294 17.1652 15 16"
+                    stroke="#93c5fd"
+                    strokeWidth="1.5"
+                    strokeLinecap="round"
+                  />
+                </svg>
+                {hasUnreadNotifications && <span className="nav-bell-dot" />}
+              </button>
+            </>
+          ) : (
+            <div className="mobile-top-auth-actions">
+              <button
+                className="btn btn-secondary"
+                onClick={() => navigate('/login')}
+              >
+                Login
+              </button>
+              <button
+                className="btn btn-primary"
+                onClick={() => navigate('/register')}
+              >
+                Register
+              </button>
+            </div>
           )}
         </div>
       )}
 
-      {/* Mobile bottom navbar: appears on all pages */}
+      {/* MOBILE: BOTTOM NAVBAR (all pages) */}
       {isMobile && (
         <div className="mobile-bottom-nav">
           {/* Home */}
           <button
             type="button"
-            className={`mobile-bottom-item mobile-bottom-item-icon-only ${
-              isHome ? 'active' : ''
-            }`}
+            className="mobile-bottom-item"
             onClick={() => navigate('/')}
             aria-label="Home"
           >
@@ -268,14 +318,14 @@ const Navbar = ({
             >
               <path
                 d="M4 10L12 3L20 10V19C20 19.5523 19.5523 20 19 20H5C4.44772 20 4 19.5523 4 19V10Z"
-                stroke="#e5e7eb"
+                stroke="#ffffff"
                 strokeWidth="1.5"
                 strokeLinecap="round"
                 strokeLinejoin="round"
               />
               <path
                 d="M10 20V14H14V20"
-                stroke="#e5e7eb"
+                stroke="#ffffff"
                 strokeWidth="1.5"
                 strokeLinecap="round"
                 strokeLinejoin="round"
@@ -286,7 +336,7 @@ const Navbar = ({
           {/* Add post */}
           <button
             type="button"
-            className="mobile-bottom-item mobile-bottom-item-icon-only"
+            className="mobile-bottom-item"
             onClick={() => navigate('/add')}
             aria-label="Add Post"
           >
@@ -301,18 +351,18 @@ const Navbar = ({
                 cx="12"
                 cy="12"
                 r="8"
-                stroke="#e5e7eb"
+                stroke="#ffffff"
                 strokeWidth="1.5"
               />
               <path
                 d="M12 9V15"
-                stroke="#e5e7eb"
+                stroke="#ffffff"
                 strokeWidth="1.5"
                 strokeLinecap="round"
               />
               <path
                 d="M9 12H15"
-                stroke="#e5e7eb"
+                stroke="#ffffff"
                 strokeWidth="1.5"
                 strokeLinecap="round"
               />
@@ -322,7 +372,7 @@ const Navbar = ({
           {/* Profile */}
           <button
             type="button"
-            className="mobile-bottom-item mobile-bottom-item-icon-only"
+            className="mobile-bottom-item"
             onClick={handleProfileClick}
             aria-label="Profile"
           >
@@ -337,11 +387,23 @@ const Navbar = ({
                   fill="none"
                   xmlns="http://www.w3.org/2000/svg"
                 >
-                  <circle cx="12" cy="12" r="9" stroke="#e5e7eb" strokeWidth="1.5" />
-                  <circle cx="12" cy="9" r="3" stroke="#e5e7eb" strokeWidth="1.5" />
+                  <circle
+                    cx="12"
+                    cy="12"
+                    r="9"
+                    stroke="#ffffff"
+                    strokeWidth="1.5"
+                  />
+                  <circle
+                    cx="12"
+                    cy="9"
+                    r="3"
+                    stroke="#ffffff"
+                    strokeWidth="1.5"
+                  />
                   <path
                     d="M6.5 18c1.6-2.5 4-3.5 5.5-3.5S16.9 15.5 18.5 18"
-                    stroke="#e5e7eb"
+                    stroke="#ffffff"
                     strokeWidth="1.5"
                     strokeLinecap="round"
                   />
