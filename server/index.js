@@ -435,6 +435,43 @@ app.post('/api/auth/change-password', async (req, res) => {
     res.status(500).json({ error: 'Failed to change password' });
   }
 });
+// --- Update user profile ---
+app.put('/api/users/update/:id', async (req, res) => {
+  try {
+    const allowedFields = [
+      'name',
+      'email',
+      'age',
+      'gender',
+      'mobile',
+      'hobbies',
+      'interests',
+      'avatar',
+    ];
+
+    const updates = {};
+    for (const key of allowedFields) {
+      if (req.body[key] !== undefined) {
+        updates[key] = req.body[key];
+      }
+    }
+
+    const updated = await User.findOneAndUpdate(
+      { id: req.params.id },   // ✅ you use custom "id", NOT _id
+      { $set: updates },
+      { new: true }
+    );
+
+    if (!updated) {
+      return res.status(404).json({ error: 'User not found' });
+    }
+
+    res.json(sanitizeUser(updated));
+  } catch (err) {
+    console.error('PROFILE UPDATE ERROR:', err);
+    res.status(500).json({ error: 'Profile update failed' });
+  }
+});
 
 // Follow / Unfollow another user
 app.post('/api/users/:id/follow', async (req, res) => {
