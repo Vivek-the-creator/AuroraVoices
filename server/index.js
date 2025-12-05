@@ -564,5 +564,13 @@ const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {
   console.log(`✅ Server running on port ${PORT}`);
 });
+app.get('/api/users/:id', async (req, res) => {
+  try {
+    const user = await User.findOne({ id: req.params.id });
+    if (!user) return res.status(404).json({ error: 'User not found' });
 
-
+    res.json(sanitizeUser(user));
+  } catch (err) {
+    res.status(500).json({ error: 'Failed to fetch user' });
+  }
+});
