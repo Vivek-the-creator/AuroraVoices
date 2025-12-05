@@ -207,54 +207,30 @@ box-shadow: 0 0 0 2px #0b1220;
   }
 
   /* BOTTOM NAV: dark blue background, white icons */
-  .mobile-bottom-nav {
+  /* ============================
+     MOBILE BOTTOM NAVBAR
+  ============================= */
+
+  .mobile-bottombar {
     position: fixed;
     bottom: 0;
     left: 0;
     right: 0;
-    height: 56px;
-    background: #020617;              /* dark blue bar */
-    border-top: 1px solid #1f2937;
+    height: 58px;
+    background: #0b1220;
+    border-top: 1px solid #1e293b;
     display: flex;
-    align-items: center;
     justify-content: space-around;
-    z-index: 50;
-  }
-
-  .mobile-bottom-item {
-    flex: 1;
-    height: 100%;
-    color: #f9fafb;                   /* soft white */
-    display: flex;
     align-items: center;
-    justify-content: center;
-    text-decoration: none;
+    z-index: 998 !important;
   }
 
-  /* force all icon strokes to white */
-  .mobile-bottom-item svg {
-    width: 24px;
-    height: 24px;
-  }
-
-  .mobile-bottom-item svg * {
-    stroke: #f9fafb !important;
-    fill: none;
-  }
-
-  .mobile-bottom-profile-btn {
-    background: transparent;
-    border-radius: 999px;
-    border: 1px solid #334155;
-    padding: 4px;
+  .bottom-icon {
+    color: white !important;
+    background: none !important;
+    border: none !important;
+    font-size: 26px;
     display: grid;
     place-items: center;
-  }
-
-  .mobile-bottom-profile-btn img {
-    width: 26px;
-    height: 26px;
-    border-radius: 999px;
-    object-fit: cover;
   }
 }
