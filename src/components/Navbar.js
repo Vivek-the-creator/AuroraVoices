@@ -37,7 +37,9 @@ const Navbar = ({
 
     const handleScroll = () => {
       const currentY = window.scrollY || 0;
-      if (currentY > 0 && currentY > lastScrollY.current) {
+      if (currentY == 0) {
+        setShowMobileTop(true);
+      } else if(currentY > lastScrollY.current){
         setShowMobileTop(false);
       }
       lastScrollY.current = currentY;
