@@ -10,24 +10,20 @@ A modern, responsive blog application built with React.js and CSS. This applicat
 - **Add New Post** - Create new blog posts with title and content
 - **User Authentication** - Sign up, login, and logout functionality
 - **Edit/Delete Posts** - Authors can edit or delete their own posts
+- **View Liked Posts** - Users can view the posts that they've liked earlier
+- **Searchbar** - Users can search based on the name of the poem/poet or genre
+- **Notifications** - Users receive notifications if someone likes/comments on their post
 - **Responsive Design** - Works perfectly on desktop and mobile devices
-- **Data Persistence** - Uses localStorage to save posts and user data
-
-### Bonus Features
-- **User Authentication System** - Complete registration and login flow
-- **Post Management** - Edit and delete functionality for post authors
-- **Responsive Design** - Mobile-first approach with beautiful UI
-- **Real-time Updates** - Immediate reflection of changes
-- **Form Validation** - Comprehensive client-side validation
-- **Modern UI/UX** - Clean, professional design with smooth animations
+- **Data Persistence** - Uses MongoDB Atlas to save posts and user data
 
 ## 🚀 Tech Stack
 
-- **Frontend**: React.js 18.2.0
-- **Routing**: React Router DOM 6.8.0
+- **Frontend**: React.js
+- **Backend**: Express.js, Node.js
+- **Routing**: React Router DOM
 - **Styling**: Custom CSS with modern design principles
 - **State Management**: React Hooks (useState, useEffect)
-- **Data Persistence**: localStorage
+- **Data Persistence**: MongoDB Atlas
 - **Build Tool**: Create React App
 
 ## 📦 Installation
@@ -35,7 +31,7 @@ A modern, responsive blog application built with React.js and CSS. This applicat
 1. **Clone the repository**
    ```bash
    git clone <repository-url>
-   cd blog-application
+   cd AuroraVoices
    ```
 
 2. **Install dependencies**
@@ -67,6 +63,15 @@ src/
 │   ├── Login.js             # User login component
 │   ├── Register.js          # User registration component
 │   ├── Auth.css             # Authentication styling
+|   ├── Navbar.js
+|   ├── Navbar.css
+|   ├── ProfileSidebar.js
+|   ├── ProfileSidebar.css
+|   └── pages/
+|       ├── LikedPosts.js
+|       ├── MyPosts.js
+|       ├── MyProfile.js
+|       └── Settings.js
 ├── App.js                   # Main application component
 ├── App.css                  # Main application styling
 ├── index.js                 # Application entry point
@@ -82,6 +87,7 @@ src/
 4. **Sign In**: Use your credentials to access your account
 5. **Create Posts**: Click "Add Post" to create new blog posts
 6. **Manage Posts**: Edit or delete your own posts
+7. **Like Posts**: Appreciate others by liking and commenting on their posts 
 
 ### For Developers
 1. **Add New Features**: Extend the existing components
@@ -94,26 +100,8 @@ src/
 - `npm start` - Runs the app in development mode
 - `npm build` - Builds the app for production
 - `npm test` - Launches the test runner
-- `npm eject` - Ejects from Create React App (one-way operation)
 
-## 🌐 Deployment
 
-The application is ready for deployment on various platforms:
-
-### Netlify
-1. Build the project: `npm run build`
-2. Upload the `build` folder to Netlify
-3. Configure redirects for React Router
-
-### Vercel
-1. Connect your GitHub repository
-2. Vercel will automatically detect React and deploy
-3. Configure environment variables if needed
-
-### GitHub Pages
-1. Install gh-pages: `npm install --save-dev gh-pages`
-2. Add deploy script to package.json
-3. Run: `npm run deploy`
 
 ## 🎨 Design Features
 
@@ -129,7 +117,8 @@ The application is ready for deployment on various platforms:
 The application includes a complete authentication system:
 - User registration with validation
 - Secure login functionality
-- Session management with localStorage
+- Add Security questions to retrieve your account
+- Session management with MongoDB Atlas
 - Protected routes for post creation
 - User-specific post management
 
@@ -140,18 +129,11 @@ The application is fully responsive and works on:
 - Tablets (768px - 1199px)
 - Mobile phones (320px - 767px)
 
-## 🚀 Future Enhancements
+## 🌐 Live Demo
+🔗 https://aurora-voices.vercel.app/
 
-- Database integration (MongoDB, PostgreSQL)
-- Real-time updates with WebSockets
-- Image upload functionality
-- Comment system
-- Search and filtering
-- Categories and tags
-- User profiles
-- Social sharing
-- Dark mode toggle
-
+Deployed using **Vercel** & **Render**
+(Just wait for few seconds for the content to load)
 
 ## 🤝 Contributing
 
@@ -171,7 +153,6 @@ Then restart the dev server:
 npm start
 ```
 
-Build and deploy as usual; posts will now be stored in Firestore and visible to everyone.
 
 
 
